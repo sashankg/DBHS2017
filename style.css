@@ -1,0 +1,154 @@
+html {
+    height: 100%;
+}
+body {
+    font-family: 'open_sanssemibold';
+    height: 100%;
+    /*background: url('geometry.png');*/
+    color: #1C232E;
+}
+#app {
+    width: 100%;
+    height: 100%;
+}
+.centering-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: table;
+}
+nav {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    padding-top: 20px;
+    text-align: center;
+}
+.nav-option {
+    margin: 5%;
+    font-family: 'open_sanssemibold';
+    font-size: 16px;
+    color: #1C232E;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.nav-option:hover {
+    color: #1C232E;
+    border-bottom: 2px solid;
+    text-decoration: none;
+}
+
+
+#jumbotron {
+    font-family: 'slukonimedium', sans-serif; 
+    font-size: 72px;
+    color: #1C232E;
+    letter-spacing: 10px;
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 40px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.form-form {
+}
+.form-field {
+    margin: auto;
+    padding: 10px;
+    max-width: 600px;
+}
+input[type="text"],
+input[type="text"]:focus,
+input[type="password"], 
+input[type="password"]:focus, 
+input[type="date"], 
+input[type="date"]:focus {
+    outline: none;
+    border-color: #1C232E;
+}
+.form-label {
+    font-family: 'open_sanssemibold';
+}
+
+.form-input {
+    border-color: #1C232E;
+    font-family: 'open_sansregular';
+    width: 100%;
+    margin-bottom: 5px;
+}
+.form-error {
+    color: red;   
+    height: 24px;
+}
+
+input.form-submit {
+    height: 32px; 
+    padding: 0px;
+    color: #1C232E;
+    font-family: 'open_sanssemibold';
+    font-size: 16px;
+    border: none;
+    display: block;
+    margin: auto;
+}
+input.form-submit:hover {
+    color: #1C232E;
+    border-bottom: 2px solid;
+    text-decoration: none;
+}
+
+h1 {
+    text-transform: uppercase;
+    display: block;
+    max-width: 600px;
+    text-align: center;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.facebook-login {
+    background-color: #3B5998;
+    color: white;
+    border: none;
+    text-transform: none;
+    text-align: left;
+    font-size: 14px;
+    height: 40px;
+    letter-spacing: normal;
+    padding: 0px;
+    line-height: normal;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.facebook-login:hover {
+    color: white;
+}
+
+.facebook-text {
+    margin: 10px;
+    top: -10px;
+    line-height: normal;
+    display: inline;
+    float: right;
+}
+
+.facebook-logo {
+    margin: 10px;
+    height: 20px;
+}
+
+#or {
+    font-size: 24px;
+    opacity: 0.50;
+    display: block;
+    margin: auto;
+    width: 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+input[type="radio"] {
+    margin-bottom: 0px;
+}
