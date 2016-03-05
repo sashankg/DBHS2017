@@ -1,9 +1,14 @@
 var React = require('react');
-
+var Nav = require('./Nav');
 var App = React.createClass({
     render: function() {
-        return <h1>Hello, World</h1>
+        return (
+            <div className="app">
+                <Nav />
+                {this.props.children}
+            </div>
+        );
     }
 });
 
-module.exports = App
+module.exports = App;

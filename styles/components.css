@@ -2,10 +2,19 @@ html, body, #index {
     width: 100%;
     height: 100%;
 }
-
-.page{
-    width: 100%;
+.app {
+    display: flex;
+    flex-flow: column;
     height: 100%;
+}
+nav {
+    flex: 0 1 30px;
+}
+
+.page {
+    flex: 1;
+    width: 100%;
+    display: flex;
 }
 
 .home h1 {
@@ -13,15 +22,9 @@ html, body, #index {
     text-align: center;
     font-family: 'slukonimedium', sans-serif; 
     font-size: 72px;
-    color: #060E35;
+    color: #0D19BF;
     letter-spacing: 10px;
     display: table-cell;
     vertical-align: middle;
     padding-left: 10px;
-}
-
-.centering-container {
-    width: 100%;
-    height: 100%;
-    display: table;
 }

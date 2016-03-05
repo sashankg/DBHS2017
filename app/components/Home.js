@@ -2,7 +2,11 @@ var React = require('react');
 
 var Home = React.createClass({
     render: function() {
-        return <h1>Home</h1>
+        return (
+            <div className="page home">
+                <h1>{"DeBakey High School"}<br />{"Class of 2017"}</h1>
+            </div>
+        );
     }
 });
 
