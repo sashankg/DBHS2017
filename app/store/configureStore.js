@@ -3,20 +3,13 @@ var rootReducer = require('../reducers/rootReducer');
 var routerMiddleware = require('react-router-redux').routerMiddleware;
 var thunkMiddleware = require ('redux-thunk');
 
-function configureStore() {
-    /*
-        var createStoreWithMiddleware = Redux.applyMiddleware(
-            thunkMiddleware,
-            routerMiddleware(history)
-        )(Redux.createStore);
+function configureStore(history) {
+    var createStoreWithMiddleware = Redux.applyMiddleware(
+        thunkMiddleware,
+        routerMiddleware(history)
+    )(Redux.createStore);
 
-        var store = createStoreWithMiddleware(rootReducer)
-    */
-    var store = Redux.createStore(
-        rootReducer,
-        {},
-        Redux.applyMiddleware(thunkMiddleware)
-    );
+    var store = createStoreWithMiddleware(rootReducer)
     return store;
 }
 

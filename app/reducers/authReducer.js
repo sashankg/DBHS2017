@@ -1,29 +1,14 @@
 function authReducer(state, action) {
     if(typeof state === 'undefined') {
-        return {
-            loggedIn: false,
-            loggingIn: false
-        }
+        return false; 
     }
     switch(action.type) {
+        case 'AUTHED':
+            return true;
         case 'LOGIN':
-            return {
-                loggedIn: true,
-                loggingIn: false
-            };
- 
+            return true;
         case 'LOGOUT':
-            return {
-                loggedIn: false,
-                loggingIn: false
-            };
-
-        case 'FETCH_USER':
-            return {
-                loggedIn: false,
-                loggingIn: true
-            };
-
+            return false;
         default:
             return state;
     }

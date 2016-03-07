@@ -2,7 +2,7 @@ var React = require('react');
 var connect = require('react-redux').connect;
 var userActions = require('../actions/userActions');
 var Nav = require('./Nav');
-
+var Home = require('./Home');
 var App = React.createClass({
     componentDidMount: function() {
         this.props.initAuth(); 
@@ -11,24 +11,21 @@ var App = React.createClass({
         return (
             <div className="app">
                 <Nav />
-                {this.props.children}
+                { this.props.children }
             </div>
         );
     }
 });
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
     return {
-        loggedIn: state.auth 
+        auth: state.auth 
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        initAuth: function() {
-            dispatch(userActions.initAuth);
-        }
-    }
+var mapDispatchToProps  = {
+    initAuth: userActions.initAuth
 }
+
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(App);
