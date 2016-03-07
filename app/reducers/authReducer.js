@@ -3,9 +3,7 @@ function authReducer(state, action) {
         return false; 
     }
     switch(action.type) {
-        case 'AUTHED':
-            return true;
-        case 'LOGIN':
+        case 'AUTH':
             return true;
         case 'LOGOUT':
             return false;

@@ -4,31 +4,17 @@ var push = require('react-router-redux').push;
 
 var userActions = {
     initAuth: function () {
+        var auth = this.auth;
         return function (dispatch) {
             var ref = new Firebase("https://dbhs2017.firebaseio.com/");
-            var auth = ref.getAuth();
-            console.log(auth);
-            if (auth) {
-                dispatch(authed());
-                dispatch(fetchUser(auth.uid));
+            var authed = ref.getAuth();
+            if (authed) {
+                dispatch(auth());
             }
         };
     },
-    fetchUser: function (uid) {
-        return function (dispatch) {
-            var ref = new Firebase("https://dbhs2017.firebaseio.com/users/" + uid);
-            ref.once('value', function (dataSnapshot) {
-                dispatch(login(dataSnapshot.val()));
-            }, function (error) {
-                //ERROR
-            });
-        };
-    },
-    login: function (user) {
-        return { type: 'LOGIN', user };
-    },
     signupWithEmail: function (email, password) {
-        var login = this.login;
+        var auth = this.auth;
         return function (dispatch) {
             var ref = new Firebase("https://dbhs2017.firebaseio.com/");
             ref.createUser({ email, password }, function (error, userData) {
@@ -36,7 +22,7 @@ var userActions = {
                     console.log(error);
                     //ERROR
                 } else {
-                        dispatch(login(userData));
+                        dispatch(auth(userData));
                         console.log(push);
                         dispatch(push('/'));
                     }
@@ -46,8 +32,20 @@ var userActions = {
     signupWithFacebook: function () {
         return function (dispatch) {};
     },
-    authed: function () {
-        return { type: 'AUTHED' };
+    authorize: function (token) {
+        return function (dispatch) {
+            var ref = new Firebase("https://dbhs2017.firebaseio.com/");
+            ref.auth(token, function (error, auth) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    dispatch(auth());
+                }
+            });
+        };
+    },
+    auth: function () {
+        return { type: 'AUTH' };
     }
 };
 
@@ -63,7 +61,9 @@ var App = React.createClass({
     displayName: 'App',
 
     componentDidMount: function () {
-        this.props.initAuth();
+        if (this.props.auth) {
+            this.props.initAuth();
+        }
     },
     render: function () {
         return React.createElement(
@@ -260,9 +260,7 @@ function authReducer(state, action) {
         return false;
     }
     switch (action.type) {
-        case 'AUTHED':
-            return true;
-        case 'LOGIN':
+        case 'AUTH':
             return true;
         case 'LOGOUT':
             return false;

@@ -5,7 +5,9 @@ var Nav = require('./Nav');
 var Home = require('./Home');
 var App = React.createClass({
     componentDidMount: function() {
-        this.props.initAuth(); 
+        if(this.props.auth) {
+            this.props.initAuth(); 
+        }
     },
     render: function() {
         return (
@@ -23,7 +25,7 @@ function mapStateToProps(state, props) {
     }
 }
 
-var mapDispatchToProps  = {
+var mapDispatchToProps = {
     initAuth: userActions.initAuth
 }
 
