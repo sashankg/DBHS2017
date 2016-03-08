@@ -64,10 +64,11 @@ nav {
 
 }
 
-.signup h1 {
+.page h2 {
     text-align: center;
     font-family: 'slukonimedium', sans-serif; 
     font-size: 48px;
+    color: #0D19BF;
 }
 form {
     display: flex;
@@ -119,4 +120,32 @@ button {
 button:hover {
     text-decoration: underline;
     color: #0D19BF;
+}
+
+.facebook-login {
+    background-color: #3B5998;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    height: 40px;
+    width: 212px;
+    align-self: center;
+}
+
+.facebook-login span {
+    text-transform: none;
+    text-align: left;
+    color: white;
+    font-size: 14px;
+    align-self: center;
+    padding-left: 8px;
+}
+
+.facebook-login img {
+    height: 100%;
+}
+.facebook-login:hover {
+    text-decoration: none;
+    color: white;
 }

@@ -4,11 +4,6 @@ var userActions = require('../actions/userActions');
 var Nav = require('./Nav');
 var Home = require('./Home');
 var App = React.createClass({
-    componentDidMount: function() {
-        if(this.props.auth) {
-            this.props.initAuth(); 
-        }
-    },
     render: function() {
         return (
             <div className="app">
@@ -21,12 +16,10 @@ var App = React.createClass({
 
 function mapStateToProps(state, props) {
     return {
-        auth: state.auth 
     }
 }
 
 var mapDispatchToProps = {
-    initAuth: userActions.initAuth
 }
 
 

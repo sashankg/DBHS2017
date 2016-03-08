@@ -5,7 +5,8 @@ var Form = require('react-redux-form');
 var rootReducer = Redux.combineReducers({
     routing: routerReducer,
     auth: authReducer,
-    signupForm: Form.createModelReducer('signup', { email: '', password: '', confirm: '' })
+    signupForm: Form.createModelReducer('signup', { email: '', password: '', confirm: '' }),
+    loginForm: Form.createModelReducer('login', {email: '', password: '' }),
 })
 
 module.exports = rootReducer

@@ -3,12 +3,11 @@ var push = require('react-router-redux').push;
 
 var userActions = {
     initAuth: function() {
-        var auth = this.auth;
         return function(dispatch) {
             var ref = new Firebase("https://dbhs2017.firebaseio.com/");
             var authed = ref.getAuth();
             if(authed) {
-                dispatch(auth());
+                dispatch({ type: 'AUTH' });
             }
         }
     },
@@ -22,19 +21,24 @@ var userActions = {
                     //ERROR
                 }
                 else {
-                    dispatch(authWithPassword(email, password));
-                    dispatch(push('/'));
+                    var ref = new Firebase("https://dbhs2017.firebaseio.com/");
+                    ref.authWithPassword({
+                        "email": email,
+                        "password": password 
+                    }, function(error, auth) {
+                        if(error) {
+                            console.log(error);
+                        } 
+                        else {
+                            dispatch({ type: 'AUTH' });
+                            dispatch(push('/'));
+                        }
+                    });
                 }
             });
         }
     },
-    signupWithFacebook: function() {
-        return function(dispatch) {
-
-        } 
-    },
-    authWithPassword: function(email, password) {
-        var auth = this.auth;
+    loginWithEmail: function(email, password) {
         return function(dispatch) {
             var ref = new Firebase("https://dbhs2017.firebaseio.com/");
             ref.authWithPassword({
@@ -43,27 +47,31 @@ var userActions = {
             }, function(error, auth) {
                 if(error) {
                     console.log(error);
+                    //ERROR
                 } 
                 else {
                     dispatch({ type: 'AUTH' });
+                    dispatch(push('/'));
                 }
             });
         }
-
     },
-    authWithToken: function(token) {
+    authWithFacebook: function(pathOnComplete) {
         return function(dispatch) {
             var ref = new Firebase("https://dbhs2017.firebaseio.com/");
-            ref.auth(token, function(error, auth) {
+            ref.authWithOAuthPopup('facebook', function(error, uid) {
                 if(error) {
                     console.log(error);
+                    //ERROR
                 } 
                 else {
-                    dispatch({ type: 'AUTH' });
+                    dispatch({ type: 'AUTH' })
+                    dispatch(push(pathOnComplete))
                 }
-            });
-        }
-    },
+            })
+             
+        } 
+    }
 };
 
 module.exports = userActions;

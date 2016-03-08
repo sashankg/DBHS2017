@@ -1,10 +1,12 @@
 var React = require('react');
 var SignUpForm = require('./SignUpForm');
+var FacebookLoginButton = require('./FacebookLoginButton');
 var SignUp = React.createClass({
     render: function() {
         return (
             <div className="page signup">
-                <h1>Sign Up</h1>
+                <h2>Sign Up</h2>
+                <FacebookLoginButton pathOnComplete='/'/>
                 <SignUpForm />
             </div>
         );
